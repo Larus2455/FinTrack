@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FinTrack</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @*<link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/20.1.55/material.css" />*@
+    <link href="https://cdn.syncfusion.com/ej2/20.1.55/bootstrap5-dark.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Expense_Tracker.styles.css" asp-append-version="true" />
+    <script src="https://cdn.syncfusion.com/ej2/20.1.55/dist/ej2.min.js"></script>
+</head>
+<body class="e-bigger">
+
+    <partial name="_SideBar" />
+
+    <div class="dock-target">
+
+        <nav class="navbar sticky-top">
+
+            <!-- Модальное окно поиска -->
+            <form method="get" action="/Search">
+                <input type="text" name="query" class="form-control mb-2" placeholder="Введите запрос..." />
+                <button type="submit" class="btn btn-success">Искать</button>
+            </form>
+
+
+            <!-- Всплывающее окно уведомлений -->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="notificationsPanel" aria-labelledby="notificationsPanelLabel">
+                <div class="offcanvas-header border-bottom">
+                    <h5 class="offcanvas-title" id="notificationsPanelLabel">
+                        <i class="fa-solid fa-bell me-2 text-success"></i>Уведомления
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+                </div>
+                <div class="offcanvas-body p-0">
+                    <ul class="list-group list-group-flush notification-list">
+                        <li class="list-group-item text-center py-5">
+                            <i class="fa-regular fa-bell-slash fa-2x text-secondary mb-2"></i>
+                            <div class="text-muted">Нет новых уведомлений.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- Всплывающее окно сообщений -->
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="messagesPanel" aria-labelledby="messagesPanelLabel">
+                <div class="offcanvas-header border-bottom">
+                    <h5 class="offcanvas-title" id="messagesPanelLabel">
+                        <i class="fa-solid fa-message me-2 text-success"></i>Сообщения
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+                </div>
+                <div class="offcanvas-body p-0">
+                    <ul class="list-group list-group-flush message-list">
+                        <li class="list-group-item text-center py-5">
+                            <i class="fa-regular fa-envelope-open fa-2x text-secondary mb-2"></i>
+                            <div class="text-muted">Нет новых сообщений.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            <nav class="navbar sticky-top">
+                <div class="container-fluid py-2 px-4">
+                    <i class="fa-solid fa-magnifying-glass" style="cursor:pointer" data-bs-toggle="modal" data-bs-target="#searchModal"></i>
+                    <div>
+                        <i class="fa-solid fa-bell" style="cursor:pointer" data-bs-toggle="offcanvas" data-bs-target="#notificationsPanel"></i>
+                        <i class="fa-solid fa-message" style="cursor:pointer" data-bs-toggle="offcanvas" data-bs-target="#messagesPanel"></i>
+                        <img class="profile-pic" src="~/profile.png" />
+                    </div>
+                </div>
+            </nav>
+
+
+        </nav>
+
+
+        <div class="main-content">
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <div class="@(ViewData["isDashboard"] == null?"col-md-10":"col-md-12")">
+                        <main role="main" class="pb-3">
+                            @if (ViewData["isDashboard"] == null)
+                            {
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="d-flex flex-column mb-5">
+                                            <div class="d-flex mb-1">
+                                                <div class="flex-grow-1">
+                                                    <h3 class="fw-bold">@ViewData["PageTitle"]</h3>
+                                                </div>
+                                                <div>
+                                                    @if (ViewData["PageActionText"] != null)
+                                                    {
+                                                        <a class="btn btn-success" href="@ViewData["PageActionUrl"]">
+                                                            @ViewData["PageActionText"]
+                                                        </a>
+                                                    }
+                                                </div>
+                                            </div>
+                                            <ejs-breadcrumb id="breadcrumb"
+                                                            separatorTemplate="@Html.Raw("<span class='fa-solid fa-angle-right'></span>")"></ejs-breadcrumb>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            @RenderBody()
+                        </main>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <ejs-scripts></ejs-scripts>
+</body>
+</html>

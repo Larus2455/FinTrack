@@ -1,0 +1,126 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860      
+*@
+@{
+    ViewData["Title"] = "Data Analytica";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <!-- Основная таблица транзакций -->
+        <div class="col-md-12">
+            <div class="card bg-dark text-white shadow-sm">
+                <div class="card-header bg-black text-white d-flex justify-content-between align-items-center">
+                    <h2 class="mb-0">Transaction</h2>
+                    <div class="d-flex gap-2">
+                        <a href="@ViewData["PageActionUrl"]" class="btn btn-light">@ViewData["PageActionText"]</a>
+                        <button class="btn btn-outline-light">
+                            <i class="bi bi-file-earmark-excel"></i> Export в Excel
+                        </button>
+                        <button class="btn btn-outline-light">
+                            <i class="bi bi-file-earmark-pdf"></i> Export в PDF
+                        </button>
+                        <button class="btn btn-outline-light">
+                            <i class="bi bi-file-earmark-word"></i> Export в Word
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ejs-grid id="transactions" dataSource="@Model" gridLines="None"
+                              allowSorting="true" allowPaging="true" cssClass="e-grid-dark">
+                        <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
+                        <e-grid-columns>
+                            <e-grid-column headerText="Category" field="CategoryTitleWithIcon"></e-grid-column>
+                            <e-grid-column headerText="Date" field="Date" width="110px"
+                                           type="date" format="MMM-dd-yy" textAlign="Left"></e-grid-column>
+                            <e-grid-column headerText="Amount" field="FormattedAmount" textAlign="Right" width="110px"></e-grid-column>
+                            <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
+                        </e-grid-columns>
+                    </ejs-grid>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Диаграмма расходов -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card bg-dark text-white shadow-sm">
+                <div class="card-header bg-black text-white">
+                    <h2 class="mb-0">Sumptu chart</h2>
+                </div>
+                <div class="card-body">
+                    <canvas id="expensesChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Шаблон для кнопок действий -->
+<script id="actionColumnTemplate" type="text/x-template">
+    <div class="d-flex flex-row justify-content-start">
+        <a class="btn btn-sm no-a-decoration text-light" href="/Transaction/AddOrEdit/${TransactionId}">
+            <i class="fa-solid fa-pen fa-lg"></i>
+        </a>
+        <form action="/Transaction/Delete/${TransactionId}" method="post">
+    @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-sm btn-link no-a-decoration text-danger"
+                    onclick="return confirm('Вы уверены, что хотите удалить эту запись?')">
+                <i class="fa-solid fa-trash-can fa-lg"></i>
+            </button>
+        </form>
+    </div>
+</script>
+
+<!-- Подключение Chart.js для диаграммы -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js    "></script>
+<script>
+    const ctx = document.getElementById('expensesChart').getContext('2d');
+    const expensesChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Продукты', 'Транспорт', 'Развлечения'],
+            datasets: [{
+                label: 'Расходы (₽)',
+                data: [5000, 2000, 3000],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(75, 192, 192, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: 'white' // Цвет текста оси Y
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: 'white' // Цвет текста оси X
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'white' // Цвет легенды
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+<!-- Подключение Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css    " rel="stylesheet">

@@ -1,0 +1,134 @@
+﻿@{
+    ViewData["Title"] = "Settings";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Financial App</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #bb86fc;
+            margin-bottom: 30px;
+        }
+
+        .settings-section {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+            .settings-section h2 {
+                color: #bb86fc;
+                margin-bottom: 15px;
+            }
+
+        .settings-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+            .settings-item label {
+                font-size: 1rem;
+            }
+
+            .settings-item input[type="checkbox"] {
+                transform: scale(1.5);
+            }
+
+            .settings-item select {
+                padding: 5px;
+                background-color: #222;
+                color: #e0e0e0;
+                border: 1px solid #333;
+                border-radius: 4px;
+            }
+
+        .save-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #bb86fc;
+            color: #121212;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .save-button:hover {
+                background-color: #9c66fc;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Settings</h1>
+
+        <!-- General Settings -->
+        <div class="settings-section">
+            <h2>General Settings</h2>
+            <div class="settings-item">
+                <label for="dark-mode">Enable Dark Mode</label>
+                <input type="checkbox" id="dark-mode" checked>
+            </div>
+            <div class="settings-item">
+                <label for="language">Language</label>
+                <select id="language">
+                    <option value="en">English</option>
+                    <option value="ru">Russian</option>
+                    <option value="es">Spanish</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Notification Settings -->
+        <div class="settings-section">
+            <h2>Notifications</h2>
+            <div class="settings-item">
+                <label for="email-notifications">Email Notifications</label>
+                <input type="checkbox" id="email-notifications">
+            </div>
+            <div class="settings-item">
+                <label for="sms-notifications">SMS Notifications</label>
+                <input type="checkbox" id="sms-notifications">
+            </div>
+        </div>
+
+        <!-- Security Settings -->
+        <div class="settings-section">
+            <h2>Security</h2>
+            <div class="settings-item">
+                <label for="two-factor-auth">Two-Factor Authentication</label>
+                <input type="checkbox" id="two-factor-auth">
+            </div>
+        </div>
+
+        <!-- Save Button -->
+        <button class="save-button">Save Changes</button>
+    </div>
+</body>
+</html>

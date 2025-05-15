@@ -1,0 +1,145 @@
+﻿@{
+    ViewData["Title"] = "Financial Goals";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #bb86fc;
+            margin-bottom: 30px;
+        }
+
+        .goal-card {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .goal-title {
+            font-size: 1.5rem;
+            color: #bb86fc;
+            margin-bottom: 10px;
+        }
+
+        .goal-progress {
+            background-color: #333;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 20px;
+            margin-bottom: 10px;
+        }
+
+        .goal-progress-bar {
+            background-color: #bb86fc;
+            height: 100%;
+            width: 75%; /* Example progress */
+        }
+
+        .goal-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+        }
+
+        .chart-container {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .chart {
+            width: 100%;
+            height: 300px;
+            background-color: #222;
+            border-radius: 8px;
+        }
+
+        a {
+            color: #bb86fc;
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: underline;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Financial Goals</h1>
+
+        <!-- Goal Cards -->
+        <div class="goal-card">
+            <div class="goal-title">Save for Vacation</div>
+            <div class="goal-progress">
+                <div class="goal-progress-bar"></div>
+            </div>
+            <div class="goal-details">
+                <span>Saved: $1,200</span>
+                <span>Goal: $2,000</span>
+            </div>
+        </div>
+
+        <div class="goal-card">
+            <div class="goal-title">Emergency Fund</div>
+            <div class="goal-progress">
+                <div class="goal-progress-bar" style="width: 50%;"></div>
+            </div>
+            <div class="goal-details">
+                <span>Saved: $3,000</span>
+                <span>Goal: $6,000</span>
+            </div>
+        </div>
+
+        <div class="goal-card">
+            <div class="goal-title">Invest in Stocks</div>
+            <div class="goal-progress">
+                <div class="goal-progress-bar" style="width: 90%;"></div>
+            </div>
+            <div class="goal-details">
+                <span>Saved: $4,500</span>
+                <span>Goal: $5,000</span>
+            </div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="chart-container">
+            <h2>Progress Overview</h2>
+            <div class="chart">
+                <!-- Placeholder for chart -->
+                <p style="text-align: center; line-height: 300px;">Chart will be displayed here</p>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="/AddGoal" class="btn">Add New Goal</a>
+            <a href="/EditGoals" class="btn">Edit Goals</a>
+        </div>
+    </div>
+</body>
+</html>

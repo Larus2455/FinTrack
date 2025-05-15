@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Результаты поиска";
+}
+<h2>Результаты поиска по запросу: "@ViewBag.Query"</h2>
+
+@if (ViewBag.Categories != null && ((List<Category>)ViewBag.Categories).Any())
+{
+    <h4>Категории:</h4>
+    <ul>
+        @foreach (var cat in (List<Category>)ViewBag.Categories)
+        {
+            <li>@cat.Title</li>
+        }
+    </ul>
+}
+
+@if (ViewBag.Transactions != null && ((List<Transaction>)ViewBag.Transactions).Any())
+{
+    <h4>Транзакции:</h4>
+    <ul>
+        @foreach (var tr in (List<Transaction>)ViewBag.Transactions)
+        {
+            <li>@tr.Note (@tr.Amount)</li>
+        }
+    </ul>
+}
