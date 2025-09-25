@@ -1,4 +1,14 @@
-**FinTrack** — веб-приложение для управления личными финансами, доходами и расходами. Финансовый кошелек.
+<h1 style="color: #2c3e50; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; margin-bottom: 10px;">
+  FinTrack — веб-приложение для управления личными финансами
+</h1>
+
+<p style="background-color: #e6f7ff; color: #1a5d6d; padding: 12px; border-radius: 8px; font-size: 1.05em; max-width: 650px; margin: 0 auto; text-align: center; font-weight: 500;">
+  Финансовый кошелёк для учёта доходов, расходов и постановки целей
+</p>
+
+<div style="height: 1px; background: linear-gradient(to right, transparent, #34C759, #007AFF, transparent); margin: 24px 0;"></div>
+
+
 
 ## О проекте
 FinTrack — это индивидуальный образовательный проект, ориентированный на закрепление практики разработки веб-приложений с использованием технологий Microsoft (.NET 8, ASP.NET Core MVC, Entity Framework). Проект охватывает все этапы жизненного цикла ПО: проектирование, реализация, тестирование и документирование.
