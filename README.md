@@ -4,11 +4,15 @@
 
 **Период разработки:** Декабрь 2024 — Май 2025  
 **Технологии:**
+
 -ASP.NET Core MVC
 
 -C#
+
 -Entity Framework
+
 -HTML/CSS
+
 
 **Аутентификация:** ASP.NET Identity (Identity.EntityFrameworkCore, Identity.UI)
 
