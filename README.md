@@ -127,29 +127,29 @@ FinTrack — это индивидуальный образовательный 
 
 ```
 FinTrack/
-├── FinTrack.sln                          # Решение Visual Studio
-├── Program.cs                            # Точка входа (.NET 8)
-├── appsettings.json                      # Конфигурация приложения
-├── appsettings.Development.json          # Настройки для разработки
+├── FinTrack.sln                          // Решение Visual Studio
+├── Program.cs                            // Точка входа (.NET 8)
+├── appsettings.json                      // Конфигурация приложения
+├── appsettings.Development.json          // Настройки для разработки
 │
 ├── Data/
-│   ├── ApplicationDbContext.cs           # Контекст для основных сущностей
-│   ├── AuthDbContext.cs                  # Контекст для Identity
-│   ├── Migrations/                       # Миграции EF
+│   ├── ApplicationDbContext.cs           // Контекст для основных сущностей
+│   ├── AuthDbContext.cs                  // Контекст для Identity
+│   ├── Migrations/                       // Миграции EF
 │   │   ├── 20250514231236_InitialCreate.cs
 │   │   ├── 20250515000939_AddAnalyticsAndReports.cs
-│   │   └── ...                           # Последовательные миграции
+│   │   └── ...                           // Последовательные миграции
 │   ├── ApplicationDbContextModelSnapshot.cs
 │   └── AuthDbContextModelSnapshot.cs
 │
 ├── Models/
-│   ├── ApplicationUser.cs                # Расширение пользователя Identity
-│   ├── Category.cs                       # Модель категории
-│   ├── Transaction.cs                    # Модель транзакции
-│   ├── Goal.cs                           # Модель финансовой цели
-│   ├── Reports.cs                        # Модель отчётов
-│   ├── Analytics.cs                      # Модель аналитики
-│   ├── SettingsViewModel.cs              # DTO для настроек
+│   ├── ApplicationUser.cs                // Расширение пользователя Identity
+│   ├── Category.cs                       // Модель категории
+│   ├── Transaction.cs                    // Модель транзакции
+│   ├── Goal.cs                           // Модель финансовой цели
+│   ├── Reports.cs                        // Модель отчётов
+│   ├── Analytics.cs                      // Модель аналитики
+│   ├── SettingsViewModel.cs              // DTO для настроек
 │   └── ErrorViewModel.cs
 │
 ├── Controllers/
@@ -168,12 +168,12 @@ FinTrack/
 │   ├── Account/
 │   │   ├── Login.cshtml
 │   │   ├── Register.cshtml
-│   │   └── ...                           # Страницы Identity.UI
+│   │   └── ...                           // Страницы Identity.UI
 │   │
 │   ├── Shared/
-│   │   ├── _Layout.cshtml                # Основной шаблон
-│   │   ├── _SideBar.cshtml               # Навигационная панель
-│   │   ├── _LoginLayout.cshtml           # Макет для входа
+│   │   ├── _Layout.cshtml                // Основной шаблон
+│   │   ├── _SideBar.cshtml               // Навигационная панель
+│   │   ├── _LoginLayout.cshtml           // Макет для входа
 │   │   ├── _ValidationScriptsPartial.cshtml
 │   │   └── _ViewImports.cshtml
 │   │
@@ -196,14 +196,14 @@ FinTrack/
 ├── wwwroot/
 │   ├── css/
 │   │   ├── site.css
-│   │   ├── themes.css                  # Поддержка тёмной/светлой темы
-│   │   └── bootstrap/*.css             # Bootstrap 5
+│   │   ├── themes.css                  // Поддержка тёмной/светлой темы
+│   │   └── bootstrap/*.css             // Bootstrap 5
 │   ├── js/
 │   │   ├── site.js
-│   │   ├── theme.js                    # Переключение темы
-│   │   └── jquery/*.js                 # jQuery + Validation
+│   │   ├── theme.js                    // Переключение темы
+│   │   └── jquery/*.js                 // jQuery + Validation
 │   └── lib/
-│       └── bootstrap/                  # Bootstrap файлы
+│       └── bootstrap/                  // Bootstrap файлы
 └── README.md
 ```
 
